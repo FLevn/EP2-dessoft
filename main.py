@@ -23,3 +23,12 @@ def preenche_frota(frota,navio,linha,coluna,orientacao,tamanho):
             return frota
     frota[navio] = [posicao]
     return frota
+
+# Atualiza o tabuleiro depois de uma jogada
+
+def faz_jogada(tabuleiro,linha,coluna):
+    if tabuleiro[linha][coluna] == 0:
+        tabuleiro[linha][coluna] = '-'
+    elif tabuleiro[linha][coluna] == 1:
+        tabuleiro[linha][coluna] = 'X'
+    return tabuleiro
