@@ -13,7 +13,7 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
             n += 1
     return lista
 
-# Preenche a frota no tabuleiro
+# Preenche a frota
 
 def preenche_frota(frota,navio,linha,coluna,orientacao,tamanho):
     posicao = define_posicoes(linha,coluna,orientacao,tamanho)
@@ -31,4 +31,51 @@ def faz_jogada(tabuleiro,linha,coluna):
         tabuleiro[linha][coluna] = '-'
     elif tabuleiro[linha][coluna] == 1:
         tabuleiro[linha][coluna] = 'X'
+    return tabuleiro
+
+# Posiciona a frota no tabuleiro
+
+def posiciona_frota(frota):
+    tabuleiro = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],]
+    for k, lista in frota.items():
+        if k == "porta-aviões":
+            i = 0
+            while i < len(lista[0]):
+                x = lista[0][i][0]
+                y = lista[0][i][1]
+                tabuleiro[x][y] = 1
+                i += 1
+        if k == "navio-tanque":
+            i = 0
+            j = 0
+            while j < len(lista):
+                while i < len(lista[j]):
+                    x = lista[j][i][0]
+                    y = lista[j][i][1]
+                    tabuleiro[x][y] = 1
+                    i += 1
+                j += 1
+                i = 0
+        if k == "contratorpedeiro":
+            i = 0
+            j = 0
+            while j < len(lista):
+                while i < len(lista[j]):
+                    x = lista[j][i][0]
+                    y = lista[j][i][1]
+                    tabuleiro[x][y] = 1
+                    i += 1
+                j += 1
+                i = 0
+        if k == "submarino":
+            i = 0
+            j = 0
+            while j < len(lista):
+                while i < len(lista[j]):
+                    x = lista[j][i][0]
+                    y = lista[j][i][1]
+                    tabuleiro[x][y] = 1
+                    i += 1
+                j += 1
+                i = 0
     return tabuleiro
